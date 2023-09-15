@@ -3,3 +3,9 @@
  # The amazing fact is that our recipes are made by cooking lovers, for cooking lovers.
 
 #	Our users share their best recipes, which will be available for all users around the world. The recipes are shared with ingredients list, tools and all needed to properly use the recipe. Then enjoy cooking succulent dishes and embark on a flavorful journey.
+
+# Author
+
+TIESSIA ADAMA
+Fayçal OUEDRAOGO
+Mercy Korir
