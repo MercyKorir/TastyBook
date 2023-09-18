@@ -50,12 +50,12 @@ and now open the url provided in the terminal in you browser.
 
 [http://localhost:3000](http://localhost:3000)
 
-### Enjoy :)
+### Enjoy TastyBook :)
 
-# Author
+## Author
 
-## TIESSIA ADAMA
+### TIESSIA ADAMA
 
-## Fayçal OUEDRAOGO
+### Fayçal OUEDRAOGO
 
-## Mercy Korir
+### Mercy Korir
