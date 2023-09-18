@@ -1,0 +1,107 @@
+import React, { useState } from "react";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+import styles from "../styles/Login.module.css";
+import { useNavigate } from "react-router-dom";
+
+const Login = () => {
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData({
+      ...loginData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5050/user/login",
+        loginData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+
+      if (response.status === 201) {
+        alert("Login successful!");
+        navigate("/home");
+      } else {
+        alert("Login failed. Check your email and password.");
+      }
+    } catch (err) {
+      console.error("Error: ", err);
+    }
+  };
+
+  return (
+    <div className={`${styles.formBox} ${styles.login}`}>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <div className={styles.inputBox}>
+          <span className={styles.icon}>
+            <div>E</div>
+          </span>
+          <input
+            type="email"
+            id="loginEmail"
+            name="email"
+            autoComplete="email"
+            value={loginData.email}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="loginEmail">Email</label>
+        </div>
+        <div className={styles.inputBox}>
+          <span className={styles.icon}>
+            <div>P</div>
+          </span>
+          <input
+            type="password"
+            id="loginPassword"
+            name="password"
+            value={loginData.password}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="loginPassword">Password</label>
+        </div>
+        <div className={styles.rememberForgot}>
+          <label htmlFor="remember">
+            <input type="checkbox" id="remember" />
+            Remember me
+          </label>
+          <NavLink className={styles.forgotLink} to={"/"}>
+            Forgot Password?
+          </NavLink>
+        </div>
+        <button type="submit" className={styles.btn}>
+          Login
+        </button>
+        <div className={styles.loginRegister}>
+          <p>
+            Don't have an account?{" "}
+            <NavLink className={styles.registerLink} to="/signup">
+              Register
+            </NavLink>
+          </p>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
