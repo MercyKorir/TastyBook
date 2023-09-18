@@ -46,7 +46,7 @@ Then run the client using the command:
 
 ### `npm start`
 
-and now open the url provided in the terminal in you browser.
+and now open the url provided in the terminal in your browser.
 
 [http://localhost:3000](http://localhost:3000)
 
