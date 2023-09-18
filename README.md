@@ -52,7 +52,7 @@ and now open the url provided in the terminal in your browser.
 
 ### Enjoy TastyBook :)
 
-## Authors
+# Authors
 
 ### TIESSIA ADAMA
 
