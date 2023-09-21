@@ -3,6 +3,9 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Login.module.css";
+import EmailIcon from "@mui/icons-material/Email";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import PersonIcon from "@mui/icons-material/Person";
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -62,7 +65,9 @@ const SignupForm = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles.inputBox}>
           <span className={styles.icon}>
-            <div>U</div>
+            <div>
+              <PersonIcon />
+            </div>
           </span>
           <input
             type="text"
@@ -77,7 +82,9 @@ const SignupForm = () => {
         </div>
         <div className={styles.inputBox}>
           <span className={styles.icon}>
-            <div>E</div>
+            <div>
+              <EmailIcon />
+            </div>
           </span>
           <input
             type="email"
@@ -92,7 +99,9 @@ const SignupForm = () => {
         </div>
         <div className={styles.inputBox}>
           <span className={styles.icon}>
-            <div>P</div>
+            <div>
+              <VisibilityOffIcon />
+            </div>
           </span>
           <input
             type="password"
@@ -106,7 +115,9 @@ const SignupForm = () => {
         </div>
         <div className={styles.inputBox}>
           <span className={styles.icon}>
-            <div>P</div>
+            <div>
+              <VisibilityOffIcon />
+            </div>
           </span>
           <input
             type="password"

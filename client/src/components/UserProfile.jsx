@@ -6,7 +6,7 @@ import styles from "../styles/Login.module.css";
 
 const UserProfile = () => {
   const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+  const [cookies, , removeCookie] = useCookies(["token"]);
 
   const handleLogout = async (e) => {
     e.preventDefault();

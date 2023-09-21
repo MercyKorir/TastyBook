@@ -3,6 +3,8 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/Login.module.css";
 import { useNavigate } from "react-router-dom";
+import EmailIcon from "@mui/icons-material/Email";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -52,7 +54,9 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles.inputBox}>
           <span className={styles.icon}>
-            <div>E</div>
+            <div>
+              <EmailIcon />
+            </div>
           </span>
           <input
             type="email"
@@ -67,7 +71,9 @@ const Login = () => {
         </div>
         <div className={styles.inputBox}>
           <span className={styles.icon}>
-            <div>P</div>
+            <div>
+              <VisibilityOffIcon />
+            </div>
           </span>
           <input
             type="password"
