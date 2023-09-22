@@ -6,6 +6,7 @@ import styles from "../styles/Login.module.css";
 import EmailIcon from "@mui/icons-material/Email";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import PersonIcon from "@mui/icons-material/Person";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,8 @@ const SignupForm = () => {
     password: "",
     confirmPassword: "",
   });
+  const [showPwd, setShowPwd] = useState(false);
+  const [showConfPwd, setShowConfPwd] = useState(false);
 
   const navigate = useNavigate();
 
@@ -99,12 +102,12 @@ const SignupForm = () => {
         </div>
         <div className={styles.inputBox}>
           <span className={styles.icon}>
-            <div>
-              <VisibilityOffIcon />
+            <div onClick={() => setShowPwd(!showPwd)}>
+              {showPwd ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </div>
           </span>
           <input
-            type="password"
+            type={showPwd ? "text" : "password"}
             id="password"
             name="password"
             value={formData.password}
@@ -115,12 +118,12 @@ const SignupForm = () => {
         </div>
         <div className={styles.inputBox}>
           <span className={styles.icon}>
-            <div>
-              <VisibilityOffIcon />
+            <div onClick={() => setShowConfPwd(!showConfPwd)}>
+              {showConfPwd ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </div>
           </span>
           <input
-            type="password"
+            type={showConfPwd ? "text" : "password"}
             id="confirmPassword"
             name="confirmPassword"
             value={formData.confirmPassword}

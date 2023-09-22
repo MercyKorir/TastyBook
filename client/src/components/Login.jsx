@@ -5,12 +5,14 @@ import styles from "../styles/Login.module.css";
 import { useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
+  const [showPwd, setShowPwd] = useState(false);
 
   const navigate = useNavigate();
 
@@ -71,12 +73,12 @@ const Login = () => {
         </div>
         <div className={styles.inputBox}>
           <span className={styles.icon}>
-            <div>
-              <VisibilityOffIcon />
+            <div onClick={() => setShowPwd(!showPwd)}>
+              {showPwd ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </div>
           </span>
           <input
-            type="password"
+            type={showPwd ? "text" : "password"}
             id="loginPassword"
             name="password"
             value={loginData.password}
