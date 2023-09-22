@@ -120,4 +120,73 @@ router.delete("/delete/:id", verifyToken, async (req, res) => {
   }
 });
 
+// Like a Recipe
+router.post("/like/:id", verifyToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user._id;
+    const recipe = await Recipe.findById(id);
+
+    if (!recipe) {
+      return res.status(404).json({ error: "Recipe not found" });
+    }
+
+    if (recipe.likes.includes(userId)) {
+      return res
+        .status(400)
+        .json({ error: "You have already liked this recipe" });
+    }
+
+    recipe.likes.push(userId);
+    await recipe.save();
+
+    res.status(200).json({ message: "Recipe liked successfully" });
+  } catch (err) {
+    console.error("Error liking recipe: ", err);
+    res.status(500).json({ error: "Failed to like recipe" });
+  }
+});
+
+// Unlike a Recipe
+router.post("/unlike/:id", verifyToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user._id;
+
+    const recipe = await Recipe.findById(id);
+    if (!recipe) {
+      return res.status(404).json({ error: "Recipe not found" });
+    }
+    if (!recipe.likes.includes(userId)) {
+      return res.status(400).json({ error: "You have not liked this recipe" });
+    }
+
+    recipe.likes = recipe.likes.filter(
+      (likeId) => likeId.toString() !== userId.toString()
+    );
+    await recipe.save();
+
+    res.status(200).json({ message: "Recipe unliked successfully" });
+  } catch (err) {
+    console.error("Error unliking recipe: ", err);
+    res.status(500).json({ error: "Failed to unlike recipe" });
+  }
+});
+
+// Get all likes for recipe
+router.get("/likes/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const recipe = await Recipe.findById(id);
+    if (!recipe) {
+      return res.status(404).json({ error: "Recipe not found" });
+    }
+    const likesCount = recipe.likes.length;
+    res.status(200).json({ likesCount });
+  } catch (err) {
+    console.error("Error getting likes count: ", err);
+    res.status(500).json({ error: "Failed to get likes count" });
+  }
+});
+
 export default router;
