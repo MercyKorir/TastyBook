@@ -103,7 +103,11 @@ const SignupForm = () => {
         <div className={styles.inputBox}>
           <span className={styles.icon}>
             <div onClick={() => setShowPwd(!showPwd)}>
-              {showPwd ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              {showPwd ? (
+                <VisibilityIcon style={{ cursor: "pointer" }} />
+              ) : (
+                <VisibilityOffIcon style={{ cursor: "pointer" }} />
+              )}
             </div>
           </span>
           <input
@@ -119,7 +123,11 @@ const SignupForm = () => {
         <div className={styles.inputBox}>
           <span className={styles.icon}>
             <div onClick={() => setShowConfPwd(!showConfPwd)}>
-              {showConfPwd ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              {showConfPwd ? (
+                <VisibilityIcon style={{ cursor: "pointer" }} />
+              ) : (
+                <VisibilityOffIcon style={{ cursor: "pointer" }} />
+              )}
             </div>
           </span>
           <input

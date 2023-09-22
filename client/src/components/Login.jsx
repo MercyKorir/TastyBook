@@ -74,7 +74,11 @@ const Login = () => {
         <div className={styles.inputBox}>
           <span className={styles.icon}>
             <div onClick={() => setShowPwd(!showPwd)}>
-              {showPwd ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              {showPwd ? (
+                <VisibilityIcon style={{ cursor: "pointer" }} />
+              ) : (
+                <VisibilityOffIcon style={{ cursor: "pointer" }} />
+              )}
             </div>
           </span>
           <input
