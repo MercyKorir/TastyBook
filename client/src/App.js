@@ -15,8 +15,6 @@ function App() {
   useEffect(() => {
     if (cookies.token) {
       navigate("/home");
-    } else {
-      navigate("/");
     }
   }, [cookies.token, navigate]);
 
