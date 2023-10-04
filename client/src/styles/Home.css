@@ -1,3 +1,11 @@
+/* @keyframes slideAnim {
+	0% {
+		justify-content: space-between;
+	}
+	100% {
+		justify-content: space-around;
+	}
+} */
 .container {
 	position: relative;
 	top: 60px;
@@ -6,6 +14,9 @@
 	border: 2px green dashed;
 	margin: 40px;
 	justify-content: space-around;
+	/* animation: slideAnim 3s cubic-bezier(0.19, 1, 0.22, 1) 2s forwards;
+	animation-name: slide;
+	animation-duration: 4s; */
 	color: #ffffff;
 	width: 1300px;
 	--bkg-color: rgb(82, 172, 118);
