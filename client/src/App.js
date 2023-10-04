@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import SignupForm from "./components/SignupForm";
 import UserProfile from "./components/UserProfile";
 import AuthWrapper from "./components/AuthWrapper";
+import Home from "./components/Home";
 import { useEffect } from "react";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       <Header />
       <Routes>
         <Route
-          path="/"
+          path="/login"
           element={
             <AuthWrapper>
               <Login />
@@ -38,7 +39,8 @@ function App() {
             </AuthWrapper>
           }
         />
-        <Route path="/home" element={<UserProfile />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/user" element={<UserProfile />} />
       </Routes>
     </div>
   );
