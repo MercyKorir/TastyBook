@@ -3,12 +3,12 @@
 	top: 60px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	border: 2px green dashed;
 	margin: 40px;
+	justify-content: space-around;
 	color: #ffffff;
-	width: 1000px;
-	--bkg-color: rgb(192, 241, 212);
+	width: 1300px;
+	--bkg-color: rgb(82, 172, 118);
 	--bkg: rgb(84, 229, 84);
 }
 

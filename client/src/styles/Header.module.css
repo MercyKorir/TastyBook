@@ -3,11 +3,12 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 100px;
+  padding: 5px 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 99;
+  background-color: #162938;
 }
 
 .logo {

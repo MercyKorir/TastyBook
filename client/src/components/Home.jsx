@@ -17,8 +17,8 @@ const Home = () => {
 						cooking experience. Join our community of foodies and explore a world of
 						delicious flavors with TastyBook.
 					</h5>
-					<Link to="/catalog">
-						<button>Take a Look!</button>
+					<Link to="/#">
+						<button onClick={() => alert('should go to /catalog')}>Take a Look!</button>
 					</Link>
 				</div>
 				<div className="right">

@@ -13,8 +13,10 @@ const Header = () => {
 
   return (
     <header>
-      <img src={logo} alt='logo' />
-      <h2 className={styles.logo}>TastyBook</h2>
+      <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+        <img src={logo} alt='logo' />
+        <h2 className={styles.logo}>TastyBook</h2>
+      </div>
       <nav className={styles.navigation}>
         <NavLink className={styles.navItem} to={"#"}>
           Home

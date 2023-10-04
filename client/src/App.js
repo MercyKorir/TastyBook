@@ -20,7 +20,7 @@ function App() {
   }, [cookies.token, navigate]);
 
   return (
-    <div>
+    <div style={{display: 'flex', flexDirection: 'column'}}>
       <Header />
       <Routes>
         <Route
