@@ -18,7 +18,7 @@ const Header = () => {
           Home
         </NavLink>
         <NavLink className={styles.navItem} to={"#"}>
-          Services
+          Catalog
         </NavLink>
         <NavLink className={styles.navItem} to={"#"}>
           About Us
