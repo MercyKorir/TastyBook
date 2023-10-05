@@ -8,7 +8,7 @@ const Home = () => {
 		<>
 			<div className="container">
 				<div className="left">
-					<h2> Find your favorite recipes </h2>
+					<h2> Find your favorite recipes</h2>
 					<h5>
 						The TastyBook is a cooking app that offers avariety of recipes
 						coming from all around the world, suitable for all cooking skill levels.
@@ -17,15 +17,15 @@ const Home = () => {
 						cooking experience. Join our community of foodies and explore a world of
 						delicious flavors with TastyBook.
 					</h5>
-					<Link to="/#">
+					<Link to="#">
 						<button onClick={() => alert('should go to /catalog')}>Take a Look!</button>
 					</Link>
 				</div>
 				<div className="right">
-					<div> <p>Lorem</p> </div>
-					<div> <p>Ipsum</p> </div>
-					<div> <p>Fidelis</p> </div>
-					<div> <p>Octum</p> </div>
+					<div> <p>Recipe card</p> </div>
+					<div> <p>Recipe card</p> </div>
+					<div> <p>Recipe card</p> </div>
+					<div> <p>Add New Recipe</p> </div>
 				</div>
 			</div>
 		</>

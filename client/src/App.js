@@ -7,6 +7,8 @@ import SignupForm from "./components/SignupForm";
 import UserProfile from "./components/UserProfile";
 import AuthWrapper from "./components/AuthWrapper";
 import Home from "./components/Home";
+import About from "./components/About";
+import Footer from "./components/Footer";
 import { useEffect } from "react";
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
   }, [cookies.token, navigate]);
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
+    <div style={{display: 'flex', flexDirection: 'column', paddingTop: '100px'}}>
       <Header />
       <Routes>
         <Route
@@ -42,6 +44,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/user" element={<UserProfile />} />
       </Routes>
+
+      <About />
+      <Footer />
     </div>
   );
 }

@@ -7,11 +7,9 @@
 	}
 } */
 .container {
-	position: relative;
-	top: 60px;
 	display: flex;
 	align-items: center;
-	border: 2px green dashed;
+	/* border: 2px green dashed; */
 	margin: 40px;
 	justify-content: space-around;
 	/* animation: slideAnim 3s cubic-bezier(0.19, 1, 0.22, 1) 2s forwards;
@@ -63,20 +61,20 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	border: 2px blue dashed;
+	/* border: 2px blue dashed; */
 	border-radius: 10px;
-	width: 500px;
+	width: 600px;
 }
 
 .right div {
 	background-color: var(--bkg);
-	border: 2px red dashed;
+	/* border: 2px red dashed; */
 	width: 200px;
 	height: 200px;
 	text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 10px;
+	margin: 30px;
 	border-radius: 10px;
 }
