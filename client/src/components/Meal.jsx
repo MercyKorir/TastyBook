@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import MealItem from "./MealItem";
-import ReacipeIndex from "./RecipeIndex";
+import MealItem from "../../../client/src/components/MealItem";
+import ReacipeIndex from "../../../client/src/components/RecipeIndex";
 const Meal = () => {
     const [search,setSearch]=useState();
     const [show,setShow]=useState(false);
