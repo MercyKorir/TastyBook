@@ -9,6 +9,7 @@ import AuthWrapper from "./components/AuthWrapper";
 import Home from "./components/Home";
 import About from "./components/About";
 import Footer from "./components/Footer";
+import NewRecipe from "./components/NewRecipe";
 import { useEffect } from "react";
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           }
         />
         <Route path="/" element={<Home />} />
+        <Route path="/newrecipe" element={<NewRecipe />} />
         <Route path="/user" element={<UserProfile />} />
       </Routes>
 

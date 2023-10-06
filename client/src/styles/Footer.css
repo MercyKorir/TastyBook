@@ -3,7 +3,8 @@
 	border-top: 2px solid #ffffff;
 	color: #ffffff;
 	width: 110%;
-	position: relative;
+	position: fixed;
+	bottom: 0px;
 	left: -70px;
 }
 

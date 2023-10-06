@@ -31,3 +31,9 @@
 #about span {
 	color: rgb(84, 229, 84);
 }
+
+#about .socials {
+	display: flex;
+	flex-direction: row;
+	margin: 0px;
+}
