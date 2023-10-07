@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import users from "./routes/user.js";
 import passport from "passport";
 import recipes from "./routes/recipe.js";
+import categories from "./routes/category.js";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -25,6 +26,7 @@ app.use(passport.initialize());
 
 app.use("/user", users);
 app.use("/recipe", recipes);
+app.use("/category", categories);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
