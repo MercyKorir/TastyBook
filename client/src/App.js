@@ -1,6 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import SignupForm from "./components/SignupForm";
@@ -10,20 +8,14 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import RecipeForm from "./components/RecipeForm_front";
-import { useEffect } from "react";
+import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
-  const navigate = useNavigate();
-  const [cookies, ,] = useCookies(["token"]);
-
-  useEffect(() => {
-    if (cookies.token) {
-      navigate("/home");
-    }
-  }, [cookies.token, navigate]);
-
   return (
-    <div style={{display: 'flex', flexDirection: 'column', paddingTop: '100px'}}>
+    <div
+      style={{ display: "flex", flexDirection: "column", paddingTop: "100px" }}
+    >
       <Header />
       <Routes>
         <Route
@@ -45,6 +37,22 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/recipe/create" element={<RecipeForm />} />
         <Route path="/user" element={<UserProfile />} />
+        <Route
+          path="/forgot-password"
+          element={
+            <AuthWrapper>
+              <ForgotPassword />
+            </AuthWrapper>
+          }
+        />
+        <Route
+          path="/reset-password"
+          element={
+            <AuthWrapper>
+              <ResetPassword />
+            </AuthWrapper>
+          }
+        />
       </Routes>
 
       <About />

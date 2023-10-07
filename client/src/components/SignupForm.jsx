@@ -17,6 +17,7 @@ const SignupForm = () => {
   });
   const [showPwd, setShowPwd] = useState(false);
   const [showConfPwd, setShowConfPwd] = useState(false);
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -32,7 +33,7 @@ const SignupForm = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+      setMessage("Passwords do not match");
       return;
     }
 
@@ -50,12 +51,18 @@ const SignupForm = () => {
 
       if (response.status === 201) {
         alert("Signup successful!");
-        navigate("/");
+        setFormData({
+          email: "",
+          username: "",
+          password: "",
+          confirmPassword: "",
+        });
+        navigate("/login");
       } else if (response.status === 400) {
         alert("Email already exists");
       } else {
         const data = await response.data;
-        alert("Signup failed: " + data.error);
+        setMessage(`Signup failed: ${data.error}`);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -157,6 +164,7 @@ const SignupForm = () => {
             </NavLink>
           </p>
         </div>
+        <p>{message}</p>
       </form>
     </div>
   );
