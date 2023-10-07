@@ -4,11 +4,7 @@
 	justify-content: center;
 	background-color: #162938;
 	margin-top: 12px;
-	box-sizing: content-box;
 	color: #ffffff;
-	width: 110%;
-	position: relative;
-	left: -70px;
 }
 
 #about div {
@@ -28,6 +24,7 @@
 	left: -130px;
 	font-size: 30px;
 }
+
 #about span {
 	color: rgb(84, 229, 84);
 }

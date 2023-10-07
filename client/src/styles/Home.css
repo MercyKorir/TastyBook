@@ -10,7 +10,7 @@
 	display: flex;
 	align-items: center;
 	/* border: 2px green dashed; */
-	margin: 40px;
+	margin: 40px 110px;
 	justify-content: space-around;
 	/* animation: slideAnim 3s cubic-bezier(0.19, 1, 0.22, 1) 2s forwards;
 	animation-name: slide;
