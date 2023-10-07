@@ -53,9 +53,8 @@ function App() {
             </AuthWrapper>
           }
         />
+        <Route path="/about" element={<About />} />
       </Routes>
-
-      <About />
       <Footer />
     </div>
   );
