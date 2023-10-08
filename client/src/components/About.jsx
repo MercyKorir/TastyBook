@@ -28,8 +28,8 @@ const About = () => {
 				<h2>Powered By</h2>
 				<div className='member'>
 					<img src={avatar} alt="Mercy Korir" />
-					<p>Software Engineer - <strong>Backend</strong> </p>
 					<span>Mercy Korir</span>
+					<p>Software Engineer - <strong>Backend</strong> </p>
 					<div className='socials'>
 						<a href="/#">
 							<img src={linkIco} alt="linkedin_icon" title='linkedin'/>
@@ -41,8 +41,8 @@ const About = () => {
 				</div>
 				<div className='member'>
 					<img src={avatar} alt="Fayçal OUEDRAOGO" />
-					<p>Software Engineer - <strong>Frontend</strong> </p>
 					<span>Fayçal OUEDRAOGO</span>
+					<p>Software Engineer - <strong>Frontend</strong> </p>
 					<div className='socials'>
 						<a href="/#">
 							<img src={linkIco} alt="github_icon" />
@@ -54,8 +54,8 @@ const About = () => {
 				</div>
 				<div id='member'>
 					<img src={avatar} alt="TIESSIA ADAMA" />
-					<p>Software Engineer - <strong>Frontend</strong> </p>
 					<span>TIESSIA ADAMA</span>
+					<p>Software Engineer - <strong>Frontend</strong> </p>
 					<div className='socials'>
 						<a href="/#">
 							<img src={linkIco} alt="github_icon" />
