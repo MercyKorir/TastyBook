@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from '../styles/AccoutSettings.module.css'
 
 const AccountSettings = () => {
   return (
-    <div>AccountSettings</div>
+    <div className={styles.container}>AccountSettings</div>
   )
 }
 

@@ -110,70 +110,75 @@ router.get("/all", async (req, res) => {
 });
 
 // Update Recipe (by id)
-router.patch("/update/:id", verifyToken, async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { title, ingredients, instructions, image, categoryNames } = req.body;
-    const author = req.user._id.toString();
-    const recipe = await Recipe.findById(id);
+router.patch(
+  "/update/:id",
+  verifyToken,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { title, ingredients, instructions, categoryNames } = req.body;
+      const author = req.user._id.toString();
+      const recipe = await Recipe.findById(id);
 
-    if (!recipe) {
-      return res.status(404).json({ error: "Recipe not found" });
-    }
-    if (recipe.author.toString() !== author) {
-      return res
-        .status(403)
-        .json({ error: "You are not authorized to update this recipe" });
-    }
-
-    let categories;
-
-    if (categoryNames && categoryNames.length > 0) {
-      const existingCategories = await Category.find({
-        name: { $in: categoryNames },
-      });
-
-      if (existingCategories.length !== categoryNames.length) {
-        const nonExistCategories = categoryNames.filter(
-          (name) =>
-            !existingCategories.find((category) => category.name === name)
-        );
-        return res.status(400).json({
-          error: "Failed to update recipe",
-          message: `The following categories do not exist: ${nonExistCategories.join(
-            ", "
-          )}. Please choose from available categories.`,
-          availableCategories:
-            "Appetizers, Desserts,Salads,Main Course,Side Dish,Beverage,Lunch,Breakfast,Baking,Vegetarian,Grilling and BBQ,Kid-friendly,Quick and Easy,Budget-friendly,Left-overs,Dairy-Free,International Cuisine,Soups and Stews,Sauces and Gravies",
-        });
+      if (!recipe) {
+        return res.status(404).json({ error: "Recipe not found" });
       }
-      categories = existingCategories.map((category) => category._id);
-    }
+      if (recipe.author.toString() !== author) {
+        return res
+          .status(403)
+          .json({ error: "You are not authorized to update this recipe" });
+      }
 
-    if (title) {
-      recipe.title = title;
-    }
-    if (ingredients) {
-      recipe.ingredients = ingredients;
-    }
-    if (instructions) {
-      recipe.instructions = instructions;
-    }
-    if (image) {
-      recipe.image = image;
-    }
-    if (categories) {
-      recipe.categories = categories;
-    }
+      let categories;
 
-    await recipe.save();
+      if (categoryNames && categoryNames.length > 0) {
+        const existingCategories = await Category.find({
+          name: { $in: categoryNames },
+        });
 
-    res.status(200).json({ message: "Recipe updated successfully", recipe });
-  } catch (err) {
-    console.error("Error updating recipe: ", err);
-    res.status(500).json({ error: "Failed to update recipe" });
+        if (existingCategories.length !== categoryNames.length) {
+          const nonExistCategories = categoryNames.filter(
+            (name) =>
+              !existingCategories.find((category) => category.name === name)
+          );
+          return res.status(400).json({
+            error: "Failed to update recipe",
+            message: `The following categories do not exist: ${nonExistCategories.join(
+              ", "
+            )}. Please choose from available categories.`,
+            availableCategories:
+              "Appetizers, Desserts,Salads,Main Course,Side Dish,Beverage,Lunch,Breakfast,Baking,Vegetarian,Grilling and BBQ,Kid-friendly,Quick and Easy,Budget-friendly,Left-overs,Dairy-Free,International Cuisine,Soups and Stews,Sauces and Gravies",
+          });
+        }
+        categories = existingCategories.map((category) => category._id);
+      }
+
+      if (title) {
+        recipe.title = title;
+      }
+      if (ingredients) {
+        recipe.ingredients = ingredients;
+      }
+      if (instructions) {
+        recipe.instructions = instructions;
+      }
+      if (req.file) {
+        recipe.image = req.file.path;
+      }
+      if (categories) {
+        recipe.categories = categories;
+      }
+
+      await recipe.save();
+
+      res.status(200).json({ message: "Recipe updated successfully", recipe });
+    } catch (err) {
+      console.error("Error updating recipe: ", err);
+      res.status(500).json({ error: "Failed to update recipe" });
+    }
   }
-});
+);
 
 // Delete Recipe (by id)
 router.delete("/delete/:id", verifyToken, async (req, res) => {
