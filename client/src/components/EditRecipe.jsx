@@ -8,7 +8,7 @@ const EditRecipe = ({ recipe, onEditDone }) => {
     ingredients: recipe.ingredients,
     instructions: recipe.instructions,
     image: recipe.image,
-    categoryNames: recipe.categories.map((category) => category.name), // Initialize with current category names
+    categoryNames: recipe.categories.map((category) => category.name),
   });
 
   const [categories, setCategories] = useState([]);
@@ -76,6 +76,7 @@ const EditRecipe = ({ recipe, onEditDone }) => {
         }
       );
       if (response.status === 200) {
+        setSelectedImage(null);
         setInterval(() => {
           onEditDone();
         }, 2000);

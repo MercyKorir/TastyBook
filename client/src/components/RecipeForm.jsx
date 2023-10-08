@@ -70,6 +70,7 @@ const RecipeForm = () => {
           image: null,
           categoryNames: [],
         });
+        setSelectedImage(null)
       } else {
         alert("Recipe creation failed");
       }
