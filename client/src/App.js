@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import RecipeForm from "./components/RecipeForm";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
-import AllRecipeCard from "./components/AllRecipeCard_front";
+import AllRecipes from './components/AllRecipes'
 import Recipe from "./components/Recipe";
 import Meal from "./components/Meal";
 
@@ -39,7 +39,7 @@ function App() {
         />
         <Route path="/" element={<Home />} />
         <Route path="/recipe/create" element={<RecipeForm />} />
-        <Route path="/recipe/1" element={<AllRecipeCard />} />
+        <Route path="/recipes" element={<AllRecipes />} />
         <Route path="/user" element={<UserProfile />} />
         <Route
           path="/forgot-password"

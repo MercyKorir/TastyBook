@@ -70,7 +70,7 @@ const RecipeForm = () => {
           image: null,
           categoryNames: [],
         });
-        setSelectedImage(null)
+        setSelectedImage(null);
       } else {
         alert("Recipe creation failed");
       }
@@ -125,84 +125,86 @@ const RecipeForm = () => {
   }, [navigate, cookies.token]);
 
   return (
-    <div id="rcpForm">
-      <h2>Create your recipe</h2>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div className="row">
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="row">
-          <label htmlFor="image">Choose an image for your recipe</label>
-          <input
-            type="file"
-            id="image"
-            accept="image/*"
-            onChange={handleImageChange}
-            required
-          />
-        </div>
-        {selectedImage && (
+    <div className="recipeFormContainer">
+      <div id="rcpForm">
+        <h2>Create your recipe</h2>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="row">
-            <label>Selected Image Preview:</label>
-            <img
-              src={URL.createObjectURL(selectedImage)}
-              alt="Selected Recipe"
-              style={{ maxWidth: "100%", maxHeight: "200px" }}
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
             />
           </div>
-        )}
-        <div className="container">
-          <label>Category</label>
-          {categories.map((category) => (
-            <div key={category._id}>
-              <span>
-                <input
-                  type="checkbox"
-                  name={category.name}
-                  checked={formData.categoryNames.includes(category.name)}
-                  onChange={handleCategoryChange}
-                />
-                {category.name}
-              </span>
+          <div className="row">
+            <label htmlFor="image">Choose an image for your recipe</label>
+            <input
+              type="file"
+              id="image"
+              accept="image/*"
+              onChange={handleImageChange}
+              required
+            />
+          </div>
+          {selectedImage && (
+            <div className="row">
+              <label>Selected Image Preview:</label>
+              <img
+                src={URL.createObjectURL(selectedImage)}
+                alt="Selected Recipe"
+                style={{ maxWidth: "100%", maxHeight: "200px" }}
+              />
             </div>
-          ))}
-        </div>
+          )}
+          <div className="container">
+            <label>Category</label>
+            {categories.map((category) => (
+              <div key={category._id}>
+                <span>
+                  <input
+                    type="checkbox"
+                    name={category.name}
+                    checked={formData.categoryNames.includes(category.name)}
+                    onChange={handleCategoryChange}
+                  />
+                  {category.name}
+                </span>
+              </div>
+            ))}
+          </div>
 
-        <div className="container">
-          <label htmlFor="ingredients">Ingredients</label>
-          <textarea
-            id="ingredients"
-            name="ingredients"
-            value={formData.ingredients}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="container">
+            <label htmlFor="ingredients">Ingredients</label>
+            <textarea
+              id="ingredients"
+              name="ingredients"
+              value={formData.ingredients}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="container">
-          <label htmlFor="instructions">Instructions</label>
-          <textarea
-            id="instructions"
-            name="instructions"
-            value={formData.instructions}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="container">
+            <label htmlFor="instructions">Instructions</label>
+            <textarea
+              id="instructions"
+              name="instructions"
+              value={formData.instructions}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <button type="submit">Create Recipe</button>
-      </form>
-      <button type="button" onClick={handleGoHome}>
-        Go Home
-      </button>
+          <button type="submit">Create Recipe</button>
+        </form>
+        <button type="button" onClick={handleGoHome}>
+          Go Home
+        </button>
+      </div>
     </div>
   );
 };

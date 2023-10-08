@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import '../styles/AllRecipeCard.css';
-import like from '../assets/icons8-like.gif';
-import dislike from '../assets/icons8-dislike.png'
+import "../styles/AllRecipeCard.css";
+import like from "../assets/icons8-like.gif";
+import dislike from "../assets/icons8-dislike.png";
 
 const AllRecipeCard = ({ recipe }) => {
   const [likesCount, setLikesCount] = useState(0);
@@ -113,34 +113,30 @@ const AllRecipeCard = ({ recipe }) => {
   }, [recipe._id, isLoggedIn]);
 
   return (
-    <div id='viewRecipe'>
-      <img src={recipe.image} alt={recipe.title} />
+    <div id="viewRecipe">
+      <img src={`http://localhost:5050/${recipe.image}`} alt={recipe.title} className="recipeImg" />
       <h2>{recipe.title}</h2>
-      <div className='container'>
+      <div className="container">
         <h3>Ingredients</h3>
         <p>{recipe.ingredients}</p>
       </div>
-      <div className='container'>
+      <div className="container">
         <h3>Instructions</h3>
         <p>{recipe.instructions}</p>
       </div>
-      <div id='bottom'>
-        <p>Likes: <span>{likesCount}</span></p>
+      <div id="bottom">
+        <p>
+          Likes: <span>{likesCount}</span>
+        </p>
         {isLiked ? (
           <img
-          src={dislike}
-          alt="dislike"
-          title="dislike"
-          onClick={handleUnlike}
+            src={dislike}
+            alt="dislike"
+            title="dislike"
+            onClick={handleUnlike}
           />
-            
         ) : (
-          <img
-          src={like}
-          alt="like"
-          title="like"
-          onClick={handleLike}
-          />
+          <img src={like} alt="like" title="like" onClick={handleLike} />
         )}
       </div>
     </div>

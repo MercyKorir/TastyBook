@@ -2,7 +2,7 @@
 	display: flex;
 	align-items: center;
 	/* border: 2px green dashed; */
-	margin: 40px 110px;
+	margin: 30px 110px;
 	justify-content: space-around;
 	color: #ffffff;
 	width: 1300px;
@@ -12,14 +12,16 @@
 
 .left {
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	flex-direction: column;
 	width: 400px;
 	/* border: 2px red dashed; */
 	border-radius: 10px;
 	padding: 10px;
 	background-color: var(--bkg);
+	padding-left: 25px;
+	padding-bottom: 20px;
 }
 
 .left h2 {
@@ -71,8 +73,8 @@
 
 .right #addNew {
 	margin: 30px;
-	width: 200px;
-	height: 200px;
+	width: 400px;
+	height: 400px;
 	font: 25px bold;
 	color: #162938;
 	border: 2px solid rgba(255, 255, 255, 0.5);
