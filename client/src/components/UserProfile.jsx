@@ -6,6 +6,7 @@ import styles from "../styles/Login.module.css";
 import userStyles from "../styles/UserProfile.module.css";
 import UserRecipes from "./UserRecipes";
 import AccountSettings from "./AccountSettings";
+import RecipeForm from "./RecipeForm";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -71,6 +72,14 @@ const UserProfile = () => {
           </li>
           <li>
             <span
+              onClick={() => handleActivateTab("create")}
+              className={activeTab === "create" ? userStyles.activeLink : ""}
+            >
+              Create Recipe
+            </span>
+          </li>
+          <li>
+            <span
               onClick={() => handleActivateTab("account")}
               className={activeTab === "account" ? userStyles.activeLink : ""}
             >
@@ -89,6 +98,7 @@ const UserProfile = () => {
       <div className={userStyles.content}>
         {activeTab === "recipes" && <UserRecipes />}
         {activeTab === "account" && <AccountSettings />}
+        {activeTab === "create" && <RecipeForm />}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 .container {
   display: flex !important;
-  height: 80vh;
+  height: 100%;
   flex-direction: row !important;
   justify-content: flex-start !important;
   align-items: flex-start !important;

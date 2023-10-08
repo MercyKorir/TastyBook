@@ -67,7 +67,7 @@ const RecipeForm = () => {
           title: "",
           ingredients: "",
           instructions: "",
-          image: "",
+          image: null,
           categoryNames: [],
         });
       } else {

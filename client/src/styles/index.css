@@ -15,4 +15,5 @@ body {
   background-size: cover;
   background: url("../../public/assets/background (3).png") no-repeat center;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
