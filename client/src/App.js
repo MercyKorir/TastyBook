@@ -58,7 +58,7 @@ function App() {
           }
         />
         <Route path="/about" element={<About />} />
-        <Route path="/meal" element={<Meal />} />
+        <Route path="/catalog" element={<Meal />} />
         <Route exact path="/:recipeId" element={<Recipe />} />
       </Routes>
       <Footer />
