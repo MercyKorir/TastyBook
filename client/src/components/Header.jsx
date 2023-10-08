@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/");
+    navigate("/login");
   };
 
   return (

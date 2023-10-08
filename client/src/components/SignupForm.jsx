@@ -159,7 +159,7 @@ const SignupForm = () => {
         <div className={styles.loginRegister}>
           <p>
             Already have an account?{" "}
-            <NavLink className={styles.registerLink} to="/">
+            <NavLink className={styles.registerLink} to="/login">
               Login
             </NavLink>
           </p>
