@@ -7,7 +7,7 @@ import AuthWrapper from "./components/AuthWrapper";
 import Home from "./components/Home";
 import About from "./components/About";
 import Footer from "./components/Footer";
-import RecipeForm from "./components/RecipeForm_front";
+import RecipeForm from "./components/RecipeForm";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import AllRecipeCard from "./components/AllRecipeCard_front";

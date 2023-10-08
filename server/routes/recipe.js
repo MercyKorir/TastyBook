@@ -4,73 +4,84 @@ import User from "../models/UserModel.js";
 import { connectToMongoDB } from "../db/conn.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
 import Category from "../models/CategoryModel.js";
+import upload from "../middleware/fileStorage.js";
 
 const router = express.Router();
 
 connectToMongoDB();
 
 // Create Recipe
-router.post("/create", verifyToken, async (req, res) => {
-  try {
-    const { title, ingredients, instructions, image, categoryNames } = req.body;
-    const author = req.user._id; // check for verification to get id of user.
+router.post(
+  "/create",
+  verifyToken,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const { title, ingredients, instructions, categoryNames } = req.body;
+      const author = req.user._id; // check for verification to get id of user.
 
-    if (!title || !ingredients || !instructions || !image || !categoryNames) {
-      return res.status(400).json({
-        error: "Failed to create recipe",
-        message: "Please provide all required fields",
+      const image = req.file ? req.file.path : "";
+
+      if (!title || !ingredients || !instructions || !image || !categoryNames) {
+        return res.status(400).json({
+          error: "Failed to create recipe",
+          message: "Please provide all required fields",
+        });
+      }
+
+      if (!categoryNames.length) {
+        return res.status(400).json({
+          error: "Failed to create recipe",
+          message: "Please select at least one category",
+        });
+      }
+
+      const existingCategories = await Category.find({
+        name: { $in: categoryNames },
       });
-    }
 
-    if (!categoryNames.length) {
-      return res.status(400).json({
-        error: "Failed to create recipe",
-        message: "Please select at least one category",
+      if (existingCategories.length !== categoryNames.length) {
+        const nonExistCategories = categoryNames.filter(
+          (name) =>
+            !existingCategories.find((category) => category.name === name)
+        );
+        return res.status(400).json({
+          error: "Failed to create recipe",
+          message: `The following categories do not exist: ${nonExistCategories.join(
+            ", "
+          )}. Please choose from available categories.`,
+          availableCategories:
+            "Appetizers, Desserts,Salads,Main Course,Side Dish,Beverage,Lunch,Breakfast,Baking,Vegetarian,Grilling and BBQ,Kid-friendly,Quick and Easy,Budget-friendly,Left-overs,Dairy-Free,International Cuisine,Soups and Stews,Sauces and Gravies",
+        });
+      }
+
+      const categories = existingCategories.map((category) => category._id);
+
+      const newRecipe = new Recipe({
+        title,
+        ingredients,
+        instructions,
+        author,
+        image,
+        categories,
       });
-    }
 
-    const existingCategories = await Category.find({
-      name: { $in: categoryNames },
-    });
+      const recipe = await newRecipe.save();
 
-    if (existingCategories.length !== categoryNames.length) {
-      const nonExistCategories = categoryNames.filter(
-        (name) => !existingCategories.find((category) => category.name === name)
+      await User.findByIdAndUpdate(
+        author,
+        { $push: { recipes: recipe._id } },
+        { new: true }
       );
-      return res.status(400).json({
-        error: "Failed to create recipe",
-        message: `The following categories do not exist: ${nonExistCategories.join(
-          ", "
-        )}. Please choose from available categories.`,
-        availableCategories:
-          "Appetizers, Desserts,Salads,Main Course,Side Dish,Beverage,Lunch,Breakfast,Baking,Vegetarian,Grilling and BBQ,Kid-friendly,Quick and Easy,Budget-friendly,Left-overs,Dairy-Free,International Cuisine,Soups and Stews,Sauces and Gravies",
-      });
+      res
+        .status(201)
+        .json({ message: "Recipe created successfully", newRecipe });
+    } catch (err) {
+      console.error("Error creating recipe: ", err);
+      res.status(500).json({ message: "Failed to create Recipe" });
     }
-
-    const categories = existingCategories.map((category) => category._id);
-
-    const newRecipe = new Recipe({
-      title,
-      ingredients,
-      instructions,
-      author,
-      image,
-      categories,
-    });
-
-    const recipe = await newRecipe.save();
-
-    await User.findByIdAndUpdate(
-      author,
-      { $push: { recipes: recipe._id } },
-      { new: true }
-    );
-    res.status(201).json({ message: "Recipe created successfully", newRecipe });
-  } catch (err) {
-    console.error("Error creating recipe: ", err);
-    res.status(500).json({ message: "Failed to create Recipe" });
   }
-});
+);
 
 // View All Recipes by user._id
 router.get("/", verifyToken, async (req, res) => {
