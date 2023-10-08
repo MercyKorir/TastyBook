@@ -1,30 +1,30 @@
 import { Route, Routes } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import SignupForm from "./components/SignupForm";
 import UserProfile from "./components/UserProfile";
 import AuthWrapper from "./components/AuthWrapper";
+import Home from "./components/Home";
+import About from "./components/About";
+import Footer from "./components/Footer";
+import RecipeForm from "./components/RecipeForm";
+import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
+import AllRecipeCard from "./components/AllRecipeCard_front";
 import { useEffect } from "react";
 import Recipe from './components/Recipe'
 import Meal from './components/Meal'
+
 function App() {
-  const navigate = useNavigate();
-  const [cookies, ,] = useCookies(["token"]);
-
-  useEffect(() => {
-    if (cookies.token) {
-      navigate("/home");
-    }
-  }, [cookies.token, navigate]);
-
   return (
+    <div
+      style={{ display: "flex", flexDirection: "column", paddingTop: "100px" }}
+    >
     <div>
       <Header />
       <Routes>
         <Route
-          path="/" 
+          path="/login" 
           element={
             <AuthWrapper>
               <Login />
@@ -39,10 +39,31 @@ function App() {
             </AuthWrapper>
           }
         />
-        <Route path="/home" element={<UserProfile />} />
-        <Route  path="/" element={<Meal/>}/>
-      <Route exact path="/:recipeId" element={<Recipe/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/recipe/create" element={<RecipeForm />} />
+        <Route path="/recipe/1" element={<AllRecipeCard />} />
+        <Route path="/user" element={<UserProfile />} />
+        <Route
+          path="/forgot-password"
+          element={
+            <AuthWrapper>
+              <ForgotPassword />
+            </AuthWrapper>
+          }
+        />
+        <Route
+          path="/reset-password"
+          element={
+            <AuthWrapper>
+              <ResetPassword />
+            </AuthWrapper>
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route  path="/meal" element={<Meal/>}/>
+        <Route exact path="/:recipeId" element={<Recipe/>}/>
       </Routes>
+      <Footer />
     </div>
   );
 }

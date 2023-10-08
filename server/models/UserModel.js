@@ -20,11 +20,14 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: new Date(),
   },
-  /*   recipes: {
+  recipes: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Recipe",
-   },
-   */
+  },
+  resetToken: {
+    type: String,
+    default: null,
+  },
 });
 
 const User = mongoose.model("User", userSchema);

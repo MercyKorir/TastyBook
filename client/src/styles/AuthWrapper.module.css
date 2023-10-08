@@ -1,0 +1,9 @@
+.authContainer {
+  min-height: 77.3vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

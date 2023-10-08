@@ -1,14 +1,24 @@
 #about {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
-	background-color: #162938;
-	margin-top: 12px;
-	box-sizing: content-box;
+	border: 2px solid rgba(255, 255, 255, 0.5);
+	border-radius: 20px;
+	backdrop-filter: blur(20px);
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+	width: 700px;
+	margin: 30px 410px;
 	color: #ffffff;
-	width: 110%;
-	position: relative;
-	left: -70px;
+	/* color: #162938; */
+}
+
+#about h1 {
+	color: #ffffff;
+}
+
+#about h2 {
+	margin: 10px;
 }
 
 #about div {
@@ -19,15 +29,36 @@
 	margin: 30px 50px;
 }
 
-#about div strong {
+#about strong {
 	font-style: italic;
+	color: rgb(84, 229, 84);
 }
 
-#about > p {
-	position: relative;
-	left: -130px;
-	font-size: 30px;
+#about_text {
+	width: 500px;
+	/* border: 2px red dashed; */
+	font-size: 20px;
+	color: #162938;
+	text-align: justify;
 }
+
+#team {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	/* border: 2px red dashed; */
+	width: 500px;
+}
+
 #about span {
-	color: rgb(84, 229, 84);
+	color: #162938;
+	font-size: 20px;
+	font-weight: 900;
+}
+
+#about .socials {
+	display: flex;
+	flex-direction: row;
+	margin: 0px;
 }
