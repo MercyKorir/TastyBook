@@ -46,7 +46,7 @@ const Login = () => {
           email: "",
           password: "",
         });
-        navigate("/home");
+        navigate("/user");
       } else {
         setMessage("Login failed. Check your email and password.");
       }

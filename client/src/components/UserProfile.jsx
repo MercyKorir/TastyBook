@@ -22,7 +22,7 @@ const UserProfile = () => {
       if (response.status === 200) {
         removeCookie("token");
         alert("Logout successful");
-        navigate("/");
+        navigate("/login");
       } else {
         console.error("Logout failed");
       }
@@ -57,17 +57,17 @@ const UserProfile = () => {
       .then((response) => {
         if (response.status === 200 && response.data.status === true) {
           const user = response.data.user;
-          //   console.log(`Welcome ${user.username}`);
-          alert(`Welcome ${user.username}`);
+          console.log(`Welcome ${user.username}`);
+          // alert(`Welcome ${user.username}`);
         } else {
           alert("Login to Continue");
           console.error("User is not authorized");
-          navigate("/");
+          navigate("/login");
         }
       })
       .catch((err) => {
         console.error("Error: ", err);
-        navigate("/");
+        navigate("/login");
       });
   }, [cookies.token, navigate]);
 
