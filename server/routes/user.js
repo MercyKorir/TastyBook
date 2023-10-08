@@ -4,6 +4,10 @@ import { connectToMongoDB } from "../db/conn.js";
 import bcrypt from "bcrypt";
 import passport from "passport";
 import { generateToken, verifyToken } from "../middleware/authMiddleware.js";
+import {
+  generateResetToken,
+  sendPasswordResetEmail,
+} from "../utils/resetPassword.js";
 
 const router = express.Router();
 
@@ -82,6 +86,46 @@ router.delete("/delete", verifyToken, async (req, res) => {
   } catch (err) {
     console.error("Error deleting user: ", err);
     res.status(500).json({ error: "Error deleting user account" });
+  }
+});
+
+// Forgot Password
+router.post("/forgot-password", async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    const resetToken = generateResetToken(user);
+    await user.updateOne({ resetToken });
+
+    sendPasswordResetEmail(user, resetToken);
+    res.status(200).json({ message: "Password reset email sent" });
+  } catch (err) {
+    console.error("Error sending password reset to email", err);
+    res.status(500).json({ message: "Error sending Reset token" });
+  }
+});
+
+// Reset password
+router.patch("/reset-password", async (req, res) => {
+  try {
+    const { email, newPassword, resetToken } = req.body;
+
+    const user = await User.findOne({ email, resetToken });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found or invalid token" });
+    }
+    const hashedNewPwd = await bcrypt.hash(newPassword, 10);
+
+    await user.updateOne({ password: hashedNewPwd, resetToken: null });
+    res.status(200).json({ message: "Password reset successful" });
+  } catch (err) {
+    console.error("Error resetting password: ", err);
+    res.status(500).json({ error: "Failed to reset password" });
   }
 });
 

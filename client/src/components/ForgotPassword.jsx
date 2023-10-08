@@ -25,7 +25,9 @@ const ForgotPassword = () => {
       );
       if (response.status === 200) {
         setMessage("Password reset email sent. Check your inbox.");
-        navigate("/reset-password");
+        setTimeout(() => {
+          navigate("/reset-password");
+        }, 3000);
       }
     } catch (err) {
       console.error("Error sending email: ", err);
