@@ -56,7 +56,7 @@ header {
   transform: scaleX(1);
 }
 
-.navigation .btnLoginPopup {
+.btnLoginPopup {
   width: 130px;
   height: 50px;
   background: transparent;
@@ -71,13 +71,13 @@ header {
   transition: 0.5s;
 }
 
-.navigation .btnLoginPopup:hover {
+.btnLoginPopup:hover {
   background: #ffffff;
   color: #162938;
 }
 
 .avatar {
-  font-size: 40px;
+  font-size: 40px !important;
   color: #ffffff;
 }
 .avatar:hover {

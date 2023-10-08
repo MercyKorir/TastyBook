@@ -1,35 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import styles from "../styles/Login.module.css";
+import userStyles from "../styles/UserProfile.module.css";
+import UserRecipes from "./UserRecipes";
+import AccountSettings from "./AccountSettings";
 
 const UserProfile = () => {
   const navigate = useNavigate();
-  const [cookies, , removeCookie] = useCookies(["token"]);
-
-  const handleLogout = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "http://localhost:5050/user/logout",
-        null,
-        {
-          withCredentials: true,
-        }
-      );
-      if (response.status === 200) {
-        removeCookie("token");
-        alert("Logout successful");
-        navigate("/login");
-      } else {
-        console.error("Logout failed");
-      }
-    } catch (err) {
-      console.error("Error Logging out:", err);
-    }
-  };
+  const [cookies, ,] = useCookies(["token"]);
+  const [activeTab, setActiveTab] = useState("recipes");
 
   const handleDeleteAccount = async () => {
     try {
@@ -38,12 +19,17 @@ const UserProfile = () => {
       });
       if (response.status === 200) {
         alert("User account deleted successfully");
+        navigate("/login");
       } else {
         console.error("Failed to delete user account");
       }
     } catch (err) {
       console.error("Error deleting user account: ", err);
     }
+  };
+
+  const handleActivateTab = (tab) => {
+    setActiveTab(tab);
   };
 
   useEffect(() => {
@@ -72,20 +58,38 @@ const UserProfile = () => {
   }, [cookies.token, navigate]);
 
   return (
-    <div>
-      <h2>User Profile</h2>
-      <button className={styles.btn} type="button" onClick={handleLogout}>
-        Logout
-      </button>
-      <br />
-      <br />
-      <button
-        className={styles.btn}
-        type="button"
-        onClick={handleDeleteAccount}
-      >
-        Delete Account
-      </button>
+    <div className={userStyles.container}>
+      <div className={userStyles.sidebar}>
+        <ul className={userStyles.navLinks}>
+          <li>
+            <span
+              onClick={() => handleActivateTab("recipes")}
+              className={activeTab === "recipes" ? userStyles.activeLink : ""}
+            >
+              Your Recipes
+            </span>
+          </li>
+          <li>
+            <span
+              onClick={() => handleActivateTab("account")}
+              className={activeTab === "account" ? userStyles.activeLink : ""}
+            >
+              Account Settings
+            </span>
+          </li>
+        </ul>
+        <button
+          className={styles.btn}
+          type="button"
+          onClick={handleDeleteAccount}
+        >
+          Delete Account
+        </button>
+      </div>
+      <div className={userStyles.content}>
+        {activeTab === "recipes" && <UserRecipes />}
+        {activeTab === "account" && <AccountSettings />}
+      </div>
     </div>
   );
 };
