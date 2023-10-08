@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import MealItem from "./MealItem";
 import "../styles/Meal.css";
 
@@ -26,9 +27,9 @@ const Meal = () => {
   return (
     <>
       <div className="main">
-        <div className="heading">
+        {/* <div className="heading">
           <h4>Recipe Card</h4>
-        </div>
+        </div> */}
         <div className="searchBox">
           <input
             type="search"
@@ -44,6 +45,9 @@ const Meal = () => {
           <button className="search-button" onClick={searchRecipe}>
             Search
           </button>
+          <Link to='/recipe/create'>
+            <button id='newRecipe'>+ Share your recipe</button>
+          </Link>
         </div>
         <div className="container">
           {show ? <MealItem data={item} /> : "Not Found"}
