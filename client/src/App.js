@@ -11,16 +11,20 @@ import RecipeForm from "./components/RecipeForm";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import AllRecipeCard from "./components/AllRecipeCard_front";
+import { useEffect } from "react";
+import Recipe from './components/Recipe'
+import Meal from './components/Meal'
 
 function App() {
   return (
     <div
       style={{ display: "flex", flexDirection: "column", paddingTop: "100px" }}
     >
+    <div>
       <Header />
       <Routes>
         <Route
-          path="/login"
+          path="/login" 
           element={
             <AuthWrapper>
               <Login />
@@ -56,6 +60,8 @@ function App() {
           }
         />
         <Route path="/about" element={<About />} />
+        <Route  path="/meal" element={<Meal/>}/>
+        <Route exact path="/:recipeId" element={<Recipe/>}/>
       </Routes>
       <Footer />
     </div>
