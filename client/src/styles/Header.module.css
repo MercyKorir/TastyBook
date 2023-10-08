@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 header {
   position: fixed;
   top: 0;
@@ -5,16 +6,28 @@ header {
   width: 100%;
   padding: 5px 100px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* z-index: 99; */
+  z-index: 9;
   background-color: #162938;
+}
+.logoImg {
+  width: 80px;
+  height: 80px;
 }
 
 .logo {
   font-size: 2em;
   color: #ffffff;
   user-select: none;
+  text-decoration: none !important;
+  margin-left: -8px;
+}
+
+.navigation {
+  margin-left: -70px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .navigation .navItem {
@@ -23,7 +36,7 @@ header {
   color: #ffffff;
   text-decoration: none;
   font-weight: 500;
-  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .navigation .navItem::after {
@@ -45,7 +58,7 @@ header {
   transform: scaleX(1);
 }
 
-.navigation .btnLoginPopup {
+.btnLoginPopup {
   width: 130px;
   height: 50px;
   background: transparent;
@@ -60,7 +73,56 @@ header {
   transition: 0.5s;
 }
 
-.navigation .btnLoginPopup:hover {
+.btnLoginPopup:hover {
   background: #ffffff;
   color: #162938;
+}
+
+.avatar {
+  font-size: 50px !important;
+  color: #ffffff;
+  transition: all ease-in-out 0.3s;
+}
+.avatar:hover {
+  color: rgb(199, 187, 187);
+}
+
+.dropdownContainer {
+  position: absolute;
+  top: 65px;
+  right: 95px;
+  background-color: #fff;
+  display: block;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 10;
+  transition: all transform ease-in-out;
+  transition-duration: 5s;
+}
+
+.dropdownContent {
+  padding: 10px;
+  min-width: 150px; /* Adjust the width as needed */
+}
+.greeting {
+  display: block;
+  padding: 8px 0;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s;
+}
+.greeting .wave {
+  color: darkgoldenrod;
+}
+.dropdownItem {
+  display: block;
+  padding: 8px 0;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.dropdownItem:hover {
+  background-color: #f2f2f2;
+  color: #333;
 }

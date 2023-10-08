@@ -32,6 +32,12 @@ const recipeSchema = new mongoose.Schema({
       ref: "User",
     },
   ],
+  categories: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+    },
+  ],
 });
 
 const Recipe = mongoose.model("Recipe", recipeSchema);

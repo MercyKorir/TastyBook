@@ -13,6 +13,7 @@ const Login = () => {
     password: "",
   });
   const [showPwd, setShowPwd] = useState(false);
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -41,9 +42,13 @@ const Login = () => {
 
       if (response.status === 201) {
         alert("Login successful!");
-        navigate("/home");
+        setLoginData({
+          email: "",
+          password: "",
+        });
+        navigate("/user");
       } else {
-        alert("Login failed. Check your email and password.");
+        setMessage("Login failed. Check your email and password.");
       }
     } catch (err) {
       console.error("Error: ", err);
@@ -96,7 +101,7 @@ const Login = () => {
             <input type="checkbox" id="remember" />
             Remember me
           </label>
-          <NavLink className={styles.forgotLink} to={"/"}>
+          <NavLink className={styles.forgotLink} to={"/forgot-password"}>
             Forgot Password?
           </NavLink>
         </div>
@@ -111,6 +116,7 @@ const Login = () => {
             </NavLink>
           </p>
         </div>
+        <p>{message}</p>
       </form>
     </div>
   );
