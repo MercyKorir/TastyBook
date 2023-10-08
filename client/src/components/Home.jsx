@@ -39,7 +39,7 @@ const Home = () => {
             <button onClick={() => navigate("/catalog")}>Take a Look!</button>
           </Link>
         </div>
-        <div className="right" onClick={handleAddRecipe}>
+        <div className="right">
           <button id="addNew" onClick={handleAddRecipe}>
             Add Your Recipe
           </button>

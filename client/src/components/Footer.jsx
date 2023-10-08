@@ -8,7 +8,7 @@ const Footer = () => {
         <h2>TastyBook</h2>
       </div> */}
       <div>
-        <p>Copyright@2023 - Made with ♥ by ALX SE Students</p>
+        <p>Copyright © 2023 / TastyBook - Made with ♥ by ALX SE Students</p>
       </div>
     </footer>
   );
