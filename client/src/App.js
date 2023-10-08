@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import RecipeForm from "./components/RecipeForm_front";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
+import AllRecipeCard from "./components/AllRecipeCard_front";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         />
         <Route path="/" element={<Home />} />
         <Route path="/recipe/create" element={<RecipeForm />} />
+        <Route path="/recipe/1" element={<AllRecipeCard />} />
         <Route path="/user" element={<UserProfile />} />
         <Route
           path="/forgot-password"

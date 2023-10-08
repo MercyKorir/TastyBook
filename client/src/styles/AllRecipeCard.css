@@ -1,0 +1,78 @@
+#viewRecipe {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	margin: 30px 260px;
+	/* padding: 20px; */
+	border: 2px solid rgba(255, 255, 255, 0.5);
+	border-radius: 20px;
+	backdrop-filter: blur(20px);
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+	width: 1000px;
+	color: #162938;
+}
+
+#viewRecipe .container {
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	color: #162938;
+	font-size: 25px;
+	margin-top: 40px;
+	/* border: 2px red dashed; */
+}
+
+#viewRecipe .container p {
+	margin: 30px;
+}
+
+#viewRecipe h2 {
+	font-size: 40px;
+	margin: 30px;
+	text-decoration: underline;
+}
+#viewRecipe h3 {
+	position: relative;
+	top: 5px;
+	left: 0;
+	border-bottom: 2px solid #162938;
+}
+
+#viewRecipe #bottom {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	/* border: 2px red dashed; */
+	width: 320px;
+	height: 60px;
+}
+
+#bottom p {
+	font-style: oblique;
+	font-size: 25px;
+}
+
+#bottom span {
+	font-weight: bold;
+}
+
+/* #viewRecipe button {
+	width: 60px;
+	border: 2px #162938 solid;
+	border-radius: 20px;
+} */
+
+#bottom img[title='like'] {
+	border-radius: 50px;
+	border: 4px #162938 solid;
+	scale: .6;
+	cursor: pointer;
+}
+
+#bottom img[title='dislike'] {
+	scale: .45;
+	cursor: pointer;
+}

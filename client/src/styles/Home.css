@@ -6,7 +6,7 @@
 		justify-content: space-around;
 	}
 } */
-.container {
+.homeContainer {
 	display: flex;
 	align-items: center;
 	/* border: 2px green dashed; */
