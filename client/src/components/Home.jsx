@@ -27,7 +27,9 @@ const Home = () => {
 					<div> <p>Recipe card</p> </div>
 					<div> <p>Recipe card</p> </div>
 					<div> <p>Recipe card</p> </div>
-					<div> <p>Add New Recipe</p> </div>
+					<Link to='/recipe/create'>
+						<button id='addNew'>Add Your Recipe</button>
+					</Link>
 				</div>
 			</div>
 		</>

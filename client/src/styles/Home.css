@@ -1,20 +1,9 @@
-/* @keyframes slideAnim {
-	0% {
-		justify-content: space-between;
-	}
-	100% {
-		justify-content: space-around;
-	}
-} */
 .homeContainer {
 	display: flex;
 	align-items: center;
 	/* border: 2px green dashed; */
 	margin: 40px 110px;
 	justify-content: space-around;
-	/* animation: slideAnim 3s cubic-bezier(0.19, 1, 0.22, 1) 2s forwards;
-	animation-name: slide;
-	animation-duration: 4s; */
 	color: #ffffff;
 	width: 1300px;
 	--bkg-color: rgb(82, 172, 118);
@@ -66,6 +55,7 @@
 	width: 600px;
 }
 
+
 .right div {
 	background-color: var(--bkg);
 	/* border: 2px red dashed; */
@@ -77,4 +67,18 @@
 	justify-content: center;
 	margin: 30px;
 	border-radius: 10px;
+}
+
+.right #addNew {
+	margin: 30px;
+	width: 200px;
+	height: 200px;
+	font: 25px bold;
+	color: #162938;
+	border: 2px solid rgba(255, 255, 255, 0.5);
+	border-radius: 20px;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(10px);
+	background: transparent;
+	cursor: pointer;
 }
