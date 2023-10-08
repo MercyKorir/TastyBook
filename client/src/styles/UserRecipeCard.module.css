@@ -31,13 +31,13 @@
   margin: 20px;
 }
 
-h2 {
+.userRecipe h2 {
   font-size: 30px;
   margin: 20px;
   text-decoration: underline;
 }
 
-h3 {
+.userRecipe h3 {
   position: relative;
   top: 5px;
   left: 0;

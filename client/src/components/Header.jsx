@@ -86,7 +86,7 @@ const Header = () => {
         <NavLink className={styles.navItem} to={"/"}>
           Home
         </NavLink>
-        <NavLink className={styles.navItem} to={"#"}>
+        <NavLink className={styles.navItem} to={"/meal"}>
           Catalog
         </NavLink>
         <NavLink className={styles.navItem} to={"/about"}>

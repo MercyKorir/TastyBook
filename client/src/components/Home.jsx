@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/Home.css';
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+	const navigate = useNavigate()
 
 	return (
 		<>
@@ -17,8 +19,8 @@ const Home = () => {
 						cooking experience. Join our community of foodies and explore a world of
 						delicious flavors with TastyBook.
 					</h5>
-					<Link to="#">
-						<button onClick={() => alert('should go to /catalog')}>Take a Look!</button>
+					<Link to="/meal">
+						<button onClick={() => navigate("/meal")}>Take a Look!</button>
 					</Link>
 				</div>
 				<div className="right">
