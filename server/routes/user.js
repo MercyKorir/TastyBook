@@ -49,12 +49,10 @@ router.post("/login", (req, res, next) => {
     const token = generateToken(user);
 
     res.cookie("token", token, {
+      withCredentials: true,
       httpOnly: false,
       sameSite: "none",
-      secure: true,
     });
-
-    console.log(res.getHeaders());
 
     res
       .status(201)
