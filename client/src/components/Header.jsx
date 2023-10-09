@@ -15,14 +15,6 @@ const Header = () => {
 
   axios.defaults.withCredentials = true;
 
-  try {
-    const [cookies, ,] = useCookies(["token"]);
-    console.log(cookies);
-    console.log(cookies.token);
-  } catch (err) {
-    console.error("Error accessing cookie");
-  }
-
   const handleLogin = (e) => {
     e.preventDefault();
     navigate("/login");
