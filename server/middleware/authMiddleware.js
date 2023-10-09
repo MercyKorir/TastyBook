@@ -43,8 +43,5 @@ export function verifyToken(req, res, next) {
         .status(401)
         .json({ message: "Authentication failed", status: false });
     }
-
-    // req.userId = decoded.userId;
-    next();
   });
 }

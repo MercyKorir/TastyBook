@@ -52,6 +52,7 @@ router.post("/login", (req, res, next) => {
       withCredentials: true,
       httpOnly: false,
       sameSite: "none",
+      secure: true,
     });
 
     res
