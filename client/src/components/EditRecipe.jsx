@@ -11,13 +11,15 @@ const EditRecipe = ({ recipe, onEditDone }) => {
     categoryNames: recipe.categories.map((category) => category.name),
   });
 
+  axios.defaults.withCredentials = true;
+
   const [categories, setCategories] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     // Fetch the list of categories
     axios
-      .get("http://localhost:5050/category/all", {
+      .get("https://tasty-book-api.vercel.app/category/all", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -66,7 +68,7 @@ const EditRecipe = ({ recipe, onEditDone }) => {
   const handleSubmit = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:5050/recipe/update/${recipe._id}`,
+        `https://tasty-book-api.vercel.app/recipe/update/${recipe._id}`,
         editedRecipe,
         {
           headers: {

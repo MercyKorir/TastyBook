@@ -17,6 +17,8 @@ const ResetPassword = () => {
   const [showConfPwd, setShowConfPwd] = useState(false);
   const [showToken, setShowToken] = useState(false);
 
+  axios.defaults.withCredentials = true;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setResetData({
@@ -35,7 +37,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.patch(
-        "http://localhost:5050/user/reset-password",
+        "https://tasty-book-api.vercel.app/user/reset-password",
         resetData,
         {
           headers: {

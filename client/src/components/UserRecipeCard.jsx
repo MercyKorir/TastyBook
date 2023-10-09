@@ -9,6 +9,8 @@ const UserRecipeCard = ({ recipe }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
 
+  axios.defaults.withCredentials = true;
+
   const handleEditStart = (e) => {
     e.preventDefault();
     setIsEditing(true);
@@ -24,7 +26,7 @@ const UserRecipeCard = ({ recipe }) => {
       console.log(recipe._id);
       try {
         const response = await axios.delete(
-          `http://localhost:5050/recipe/delete/${recipe._id}`,
+          `https://tasty-book-api.vercel.app/recipe/delete/${recipe._id}`,
           {
             headers: {
               Authorization: `Bearer ${cookies.token}`,
@@ -50,7 +52,7 @@ const UserRecipeCard = ({ recipe }) => {
     const fetchLikesCount = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5050/recipe/likes/${recipe._id}`,
+          `https://tasty-book-api.vercel.app/recipe/likes/${recipe._id}`,
           {
             withCredentials: true,
           }
@@ -80,7 +82,7 @@ const UserRecipeCard = ({ recipe }) => {
         <div className={styles.userRecipe}>
           <h2>{recipe.title}</h2>
           <img
-            src={`http://localhost:5050/${recipe.image}`}
+            src={`https://tasty-book-api.vercel.app/${recipe.image}`}
             className={styles.img}
             alt={recipe.title}
           />

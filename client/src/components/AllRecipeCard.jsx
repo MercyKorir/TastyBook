@@ -13,6 +13,8 @@ const AllRecipeCard = ({ recipe }) => {
   const [isLoggedIn] = useState(!!cookies.token);
   const navigate = useNavigate();
 
+  axios.defaults.withCredentials = true;
+
   const handleLike = async () => {
     if (!isLoggedIn) {
       const confirmLogin = window.confirm("Please log in to like this recipe");
@@ -25,7 +27,7 @@ const AllRecipeCard = ({ recipe }) => {
     }
     try {
       const response = await axios.post(
-        `http://localhost:5050/recipe/like/${recipe._id}`,
+        `https://tasty-book-api.vercel.app/recipe/like/${recipe._id}`,
         null,
         {
           withCredentials: true,
@@ -46,7 +48,7 @@ const AllRecipeCard = ({ recipe }) => {
   const handleUnlike = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5050/recipe/unlike/${recipe._id}`,
+        `https://tasty-book-api.vercel.app/recipe/unlike/${recipe._id}`,
         null,
         {
           withCredentials: true,
@@ -67,7 +69,7 @@ const AllRecipeCard = ({ recipe }) => {
     const fetchLikesCount = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5050/recipe/likes/${recipe._id}`,
+          `https://tasty-book-api.vercel.app/recipe/likes/${recipe._id}`,
           {
             withCredentials: true,
           }
@@ -90,7 +92,7 @@ const AllRecipeCard = ({ recipe }) => {
       }
       try {
         const response = await axios.get(
-          `http://localhost:5050/recipe/user-like/${recipe._id}`,
+          `https://tasty-book-api.vercel.app/recipe/user-like/${recipe._id}`,
           {
             withCredentials: true,
           }
@@ -114,7 +116,11 @@ const AllRecipeCard = ({ recipe }) => {
 
   return (
     <div id="viewRecipe">
-      <img src={`http://localhost:5050/${recipe.image}`} alt={recipe.title} className="recipeImg" />
+      <img
+        src={`https://tasty-book-api.vercel.app/${recipe.image}`}
+        alt={recipe.title}
+        className="recipeImg"
+      />
       <h2>{recipe.title}</h2>
       <div className="container">
         <h3>Ingredients</h3>

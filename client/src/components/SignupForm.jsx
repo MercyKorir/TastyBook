@@ -19,6 +19,8 @@ const SignupForm = () => {
   const [showConfPwd, setShowConfPwd] = useState(false);
   const [message, setMessage] = useState("");
 
+  axios.defaults.withCredentials = true;
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -39,7 +41,7 @@ const SignupForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5050/user/signup",
+        "https://tasty-book-api.vercel.app/user/signup",
         formData,
         {
           headers: {

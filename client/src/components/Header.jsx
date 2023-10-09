@@ -13,6 +13,8 @@ const Header = () => {
   const [user, setUser] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  axios.defaults.withCredentials = true;
+
   const handleLogin = (e) => {
     e.preventDefault();
     navigate("/login");
@@ -23,7 +25,7 @@ const Header = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5050/user/logout",
+        "https://tasty-book-api.vercel.app/user/logout",
         null,
         {
           withCredentials: true,
@@ -50,7 +52,7 @@ const Header = () => {
   useEffect(() => {
     if (cookies.token) {
       axios
-        .get("http://localhost:5050/user/verify", {
+        .get("https://tasty-book-api.vercel.app/user/verify", {
           withCredentials: true,
           headers: {
             Authorization: `Bearer ${cookies.token}`,
