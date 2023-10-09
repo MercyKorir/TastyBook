@@ -50,6 +50,7 @@ const Header = () => {
   };
 
   useEffect(() => {
+    console.log(cookies.token);
     if (cookies.token) {
       axios
         .get("https://tasty-book-api.vercel.app/user/verify", {
