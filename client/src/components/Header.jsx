@@ -15,6 +15,14 @@ const Header = () => {
 
   axios.defaults.withCredentials = true;
 
+  try {
+    const [cookies, ,] = useCookies(["token"]);
+    console.log(cookies);
+    console.log(cookies.token);
+  } catch (err) {
+    console.error("Error accessing cookie");
+  }
+
   const handleLogin = (e) => {
     e.preventDefault();
     navigate("/login");
@@ -50,13 +58,6 @@ const Header = () => {
   };
 
   useEffect(() => {
-    try {
-      const [cookies, ,] = useCookies(["token"]);
-      console.log(cookies);
-      console.log(cookies.token);
-    } catch (err) {
-      console.error("Error accessing cookie");
-    }
     if (cookies.token) {
       axios
         .get("https://tasty-book-api.vercel.app/user/verify", {
