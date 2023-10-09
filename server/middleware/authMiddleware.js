@@ -45,6 +45,5 @@ export function verifyToken(req, res, next) {
     }
 
     // req.userId = decoded.userId;
-    next();
   });
 }
