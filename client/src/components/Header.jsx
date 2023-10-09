@@ -9,9 +9,9 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [cookies, , removeCookie] = useCookies(["token"]);
   const [user, setUser] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [cookies, , removeCookie] = useCookies(["token"]);
 
   axios.defaults.withCredentials = true;
 
@@ -50,7 +50,13 @@ const Header = () => {
   };
 
   useEffect(() => {
-    console.log(cookies.token);
+    try {
+      const [cookies, ,] = useCookies(["token"]);
+      console.log(cookies);
+      console.log(cookies.token);
+    } catch (err) {
+      console.error("Error accessing cookie");
+    }
     if (cookies.token) {
       axios
         .get("https://tasty-book-api.vercel.app/user/verify", {
