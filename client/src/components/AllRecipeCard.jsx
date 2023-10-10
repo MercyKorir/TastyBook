@@ -19,7 +19,7 @@ const AllRecipeCard = ({ recipe }) => {
     if (!isLoggedIn) {
       const confirmLogin = window.confirm("Please log in to like this recipe");
       if (confirmLogin) {
-        navigate("/");
+        navigate("/login");
       } else {
         alert("You must login to like the recipe!");
       }
