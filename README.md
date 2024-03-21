@@ -86,7 +86,7 @@ followed by
 
 <div align="center">
   <a href="https://drive.google.com/file/d/14__BP5nwUSKkGI-ObexVt3Kc-8guB-H9/view?usp=drive_link">
-    <img src="https://drive.google.com/thumbnail?id=14__BP5nwUSKkGI-ObexVt3Kc-8guB-H9" alt="TastyBook Demo Video" style="max-width: 100%; object-fit: contain;" />
+    <img src="https://drive.google.com/thumbnail?id=14__BP5nwUSKkGI-ObexVt3Kc-8guB-H9" alt="TastyBook Demo Video" style="max-width: 100%; width: 100%; object-fit: contain;" />
   </a>
 </div>
 
