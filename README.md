@@ -84,7 +84,7 @@ followed by
 
 ## Demo
 
-[![TastyBook Demo Video](https://drive.google.com/file/d/1xXf-uI50P8KqltiA0_bOqHNiUfN95p8w/view?usp=drive_link)](https://drive.google.com/file/d/14__BP5nwUSKkGI-ObexVt3Kc-8guB-H9/view?usp=drive_link)
+[![TastyBook Demo Video](https://drive.google.com/thumbnail?id=1xXf-uI50P8KqltiA0_bOqHNiUfN95p8w)](https://drive.google.com/file/d/14__BP5nwUSKkGI-ObexVt3Kc-8guB-H9/view?usp=drive_link)
 
 Click the image above to watch the demo video.
 
