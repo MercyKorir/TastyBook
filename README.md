@@ -1,61 +1,97 @@
 # TastyBook
 
-### TastyBook is the ultimate culinary companion for all food and cooking enthusiast. It provides many food recipes from different countries and cultures around the world. Whether you're an experienced chef or a kitchen novice, our app is designed to elevate your cooking experience to new heights.
+TastyBook is the ultimate culinary companion for all food and cooking enthusiast. It provides many food recipes from different countries and cultures around the world. Whether you're an experienced chef or a kitchen novice, our app is designed to elevate your cooking experience to new heights.
 
-### The amazing fact is that our recipes are made by cooking professional , for cooking lovers.
+## Table of Contents
 
-#### Our users share their best recipes, which will be available for all users around the world. The recipes are shared with ingredients list, tools and all needed to properly use the recipe. Then enjoy cooking succulent dishes and embark on a flavorful journey.
+- [Introduction](#introduction)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Running the Project](#running-the-project)
+- [Demo](#demo)
+- [Authors](#authors)
 
-## Running the TastyBook
+## Introduction
 
-First navigate into the server directory using the command:
+TastyBook is the ultimate culinary companion for all food and cooking enthusiast. It provides many food recipes from different countries and cultures around the world. Whether you're an experienced chef or a kitchen novice, our app is designed to elevate your cooking experience to new heights.
 
-### `cd server`
+The amazing fact is that our recipes are made by cooking professional , for cooking lovers.
 
-Then install the dependencies by running the command:
+Our users share their best recipes, which will be available for all users around the world. The recipes are shared with ingredients list, tools and all needed to properly use the recipe. Then enjoy cooking succulent dishes and embark on a flavorful journey.
 
-### `npm install`
+## Tech Stack
 
-### or
+The project utilizes the following technologies:
 
-### `yarn install`
+**client-side:**
 
-Then run the server by running the command:
+- React.js (JavaScript Library)
+- React Router (Client-side routing)
+- CSS (Styling)
+- Axios (HTTP Client)
 
-### `npm start`
+**server-side:**
 
-### or
+- Node.js (JavaScript Runtime)
+- Express.js (Web Application Framework)
+- MongoDB (Database)
+- Passport.js (Authentication)
 
-### `yarn start`
+## Features
 
-To now run the frontend/client, navigate to client directory by running the commands:
+- Browse and search for recipes from around the world.
+- Save your favorite recipes for later.
+- Share your own recipe with the community.
+- Interact with other users and their recipes.
 
-### `cd ..`
+## Running the Project
 
-### `cd client`
+To run the TastyBook app, follow these steps:
 
-Then install the dependencies by running the command:
+1. First navigate into the server directory using the command:
+    `cd server`
 
-### `npm install`
+2. Then install the dependencies by running the command:
+    `npm install`
 
-### or
+**or**
+    `yarn install`
 
-### `yarn install`
+3. Then run the server by running the command:
+    `npm start`
 
-Then run the client using the command:
+**or**
+    `yarn start`
 
-### `npm start`
+4. To now run the frontend/client, navigate to client directory by running the commands:
+    `cd ..`
+followed by
+    `cd client`
 
-and now open the url provided in the terminal in your browser.
+5. Then install the dependencies by running the command:
+    `npm install`
 
-[http://localhost:3000](http://localhost:3000)
+**or**
+    `yarn install`
 
-### Enjoy TastyBook :)
+6. Then run the client using the command:
+    `npm start`
 
-# Authors
+7. and now open the url provided in the terminal in your browser.
+    [http://localhost:3000](http://localhost:3000)
 
-### TIESSIA ADAMA
+**Enjoy TastyBook :)**
 
-### Fayçal OUEDRAOGO
+## Demo
 
-### Mercy Korir
+[![TastyBook Demo Video](https://drive.google.com/file/d/1xXf-uI50P8KqltiA0_bOqHNiUfN95p8w/view?usp=drive_link)](https://drive.google.com/file/d/14__BP5nwUSKkGI-ObexVt3Kc-8guB-H9/view?usp=drive_link)
+
+Click the image above to watch the demo video.
+
+## Authors
+
+- TIESSIA ADAMA
+
+- Fayçal OUEDRAOGO
+
+- [Mercy Korir](https://github.com/MercyKorir)
