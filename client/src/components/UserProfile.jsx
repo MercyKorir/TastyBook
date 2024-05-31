@@ -13,8 +13,6 @@ const UserProfile = () => {
   const [cookies, ,] = useCookies(["token"]);
   const [activeTab, setActiveTab] = useState("recipes");
 
-  console.log(cookies.token);
-
   axios.defaults.withCredentials = true;
 
   const handleDeleteAccount = async () => {
