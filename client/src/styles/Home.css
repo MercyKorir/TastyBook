@@ -5,7 +5,8 @@
 	margin: 30px 110px;
 	justify-content: space-around;
 	color: #ffffff;
-	width: 1300px;
+	width: 100vw;
+	height: 73.9vh;
 	--bkg-color: rgb(82, 172, 118);
 	--bkg: rgb(84, 229, 84);
 }
