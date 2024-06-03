@@ -12,7 +12,7 @@ export function generateToken(user) {
 export function verifyToken(req, res, next) {
   const token = req.cookies.token;
 
-  console.log(token);
+  // console.log(token);
 
   if (!token) {
     return res
