@@ -9,7 +9,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [cookies, , removeCookie] = useCookies(["token"]);
+  const [cookies, ,] = useCookies(["token"]);
   const [user, setUser] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,7 +31,6 @@ const Header = () => {
         }
       );
       if (response.status === 200) {
-        removeCookie("token");
         setUser(null);
         alert("Logout successful");
         navigate("/login");

@@ -69,7 +69,10 @@ router.get("/verify", verifyToken, (req, res) => {
 
 // Logout User
 router.post("/logout", (req, res) => {
-  res.clearCookie("token");
+  res.cookie("token", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
   res.json({ message: "Logout successful" });
 });
 
