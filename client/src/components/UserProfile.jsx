@@ -13,10 +13,6 @@ const UserProfile = () => {
   const [cookies, ,] = useCookies(["token"]);
   const [activeTab, setActiveTab] = useState("recipes");
 
-  useEffect(() => {
-    console.log("Cookies at component mount: ", cookies);
-  }, [cookies])
-
   const handleDeleteAccount = async () => {
     try {
       const response = await axios.delete("https://tastybook.onrender.com/user/delete", {
