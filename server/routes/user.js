@@ -69,11 +69,21 @@ router.get("/verify", verifyToken, (req, res) => {
 
 // Logout User
 router.post("/logout", (req, res) => {
-  res.cookie("token", "", {
-    httpOnly: true,
-    expires: new Date(0),
-  });
-  res.json({ message: "Logout successful" });
+  const token = req.cookies.token;
+
+  if (token) {
+    res.clearCookie("token", {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      path: "/",
+    })
+
+    token = null;
+    res.json({ message: "Logout successful" });
+  } else {
+    res.status(400).json({ message: "User not logged in" });
+  }
 });
 
 // Delete User
