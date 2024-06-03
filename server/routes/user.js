@@ -52,7 +52,6 @@ router.post("/login", (req, res, next) => {
       httpOnly: true,
       sameSite: "none",
       secure: true,
-      domain: "https://tastybook.onrender.com",
       path: "/",
     });
 
