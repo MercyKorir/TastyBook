@@ -9,8 +9,6 @@ const UserRecipeCard = ({ recipe }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
 
-  axios.defaults.withCredentials = true;
-
   const handleEditStart = (e) => {
     e.preventDefault();
     setIsEditing(true);
@@ -26,7 +24,7 @@ const UserRecipeCard = ({ recipe }) => {
       console.log(recipe._id);
       try {
         const response = await axios.delete(
-          `https://tasty-book-api.vercel.app/recipe/delete/${recipe._id}`,
+          `https://tastybook.onrender.com/recipe/delete/${recipe._id}`,
           {
             headers: {
               Authorization: `Bearer ${cookies.token}`,
@@ -52,7 +50,7 @@ const UserRecipeCard = ({ recipe }) => {
     const fetchLikesCount = async () => {
       try {
         const response = await axios.get(
-          `https://tasty-book-api.vercel.app/recipe/likes/${recipe._id}`,
+          `https://tastybook.onrender.com/recipe/likes/${recipe._id}`,
           {
             withCredentials: true,
           }
@@ -82,7 +80,7 @@ const UserRecipeCard = ({ recipe }) => {
         <div className={styles.userRecipe}>
           <h2>{recipe.title}</h2>
           <img
-            src={`https://tasty-book-api.vercel.app/${recipe.image}`}
+            src={`https://tastybook.onrender.com/${recipe.image}`}
             className={styles.img}
             alt={recipe.title}
           />
@@ -98,10 +96,18 @@ const UserRecipeCard = ({ recipe }) => {
             <p className={styles.botP}>
               Likes: <span className={styles.botSpan}>{likesCount}</span>
             </p>
-            <button type="button" onClick={handleEditStart} className={styles.btn}>
+            <button
+              type="button"
+              onClick={handleEditStart}
+              className={styles.btn}
+            >
               Edit
             </button>
-            <button type="button" onClick={handleDeleteRecipe} className={styles.btn}>
+            <button
+              type="button"
+              onClick={handleDeleteRecipe}
+              className={styles.btn}
+            >
               Delete
             </button>
           </div>

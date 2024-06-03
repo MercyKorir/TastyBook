@@ -6,17 +6,18 @@ import styles from "../styles/AllRecipes.module.css";
 const AllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
 
-  axios.defaults.withCredentials = true;
-
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get("https://tasty-book-api.vercel.app/recipe/all", {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          "https://tastybook.onrender.com/recipe/all",
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        );
         if (response.status === 200) {
           setRecipes(response.data);
         } else {

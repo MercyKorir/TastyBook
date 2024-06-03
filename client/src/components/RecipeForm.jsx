@@ -17,8 +17,6 @@ const RecipeForm = () => {
   const [categories, setCategories] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  axios.defaults.withCredentials = true;
-
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setFormData({ ...formData, image: file });
@@ -53,7 +51,7 @@ const RecipeForm = () => {
 
     try {
       const response = await axios.post(
-        "https://tasty-book-api.vercel.app/recipe/create",
+        "https://tastybook.onrender.com/recipe/create",
         formData,
         {
           headers: {
@@ -90,7 +88,7 @@ const RecipeForm = () => {
 
   useEffect(() => {
     axios
-      .get("https://tasty-book-api.vercel.app/user/verify", {
+      .get("https://tastybook.onrender.com/user/verify", {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${cookies.token}`,
@@ -112,7 +110,7 @@ const RecipeForm = () => {
       });
 
     axios
-      .get("https://tasty-book-api.vercel.app/category/all", {
+      .get("https://tastybook.onrender.com/category/all", {
         headers: {
           "Content-Type": "application/json",
         },

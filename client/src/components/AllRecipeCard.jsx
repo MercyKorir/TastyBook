@@ -10,16 +10,16 @@ const AllRecipeCard = ({ recipe }) => {
   const [likesCount, setLikesCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [cookies, ,] = useCookies(["token"]);
-  const [isLoggedIn] = useState(!!cookies.token);
   const navigate = useNavigate();
 
-  axios.defaults.withCredentials = true;
+  const isLoggedIn = !!cookies.token;
 
   const handleLike = async () => {
+    console.log("Cookies on like: ", cookies);
     if (!isLoggedIn) {
       const confirmLogin = window.confirm("Please log in to like this recipe");
       if (confirmLogin) {
-        navigate("/login");
+        navigate("/");
       } else {
         alert("You must login to like the recipe!");
       }
@@ -27,7 +27,7 @@ const AllRecipeCard = ({ recipe }) => {
     }
     try {
       const response = await axios.post(
-        `https://tasty-book-api.vercel.app/recipe/like/${recipe._id}`,
+        `https://tastybook.onrender.com/recipe/like/${recipe._id}`,
         null,
         {
           withCredentials: true,
@@ -48,7 +48,7 @@ const AllRecipeCard = ({ recipe }) => {
   const handleUnlike = async () => {
     try {
       const response = await axios.post(
-        `https://tasty-book-api.vercel.app/recipe/unlike/${recipe._id}`,
+        `https://tastybook.onrender.com/recipe/unlike/${recipe._id}`,
         null,
         {
           withCredentials: true,
@@ -66,10 +66,11 @@ const AllRecipeCard = ({ recipe }) => {
   };
 
   useEffect(() => {
+    console.log("Cookies at component mount: ", cookies);
     const fetchLikesCount = async () => {
       try {
         const response = await axios.get(
-          `https://tasty-book-api.vercel.app/recipe/likes/${recipe._id}`,
+          `https://tastybook.onrender.com/recipe/likes/${recipe._id}`,
           {
             withCredentials: true,
           }
@@ -92,7 +93,7 @@ const AllRecipeCard = ({ recipe }) => {
       }
       try {
         const response = await axios.get(
-          `https://tasty-book-api.vercel.app/recipe/user-like/${recipe._id}`,
+          `https://tastybook.onrender.com/recipe/user-like/${recipe._id}`,
           {
             withCredentials: true,
           }
@@ -112,12 +113,12 @@ const AllRecipeCard = ({ recipe }) => {
     const interval = setInterval(fetchLikesCount, 3000);
 
     return () => clearInterval(interval);
-  }, [recipe._id, isLoggedIn]);
+  }, [recipe._id, isLoggedIn, cookies]);
 
   return (
     <div id="viewRecipe">
       <img
-        src={`https://tasty-book-api.vercel.app/${recipe.image}`}
+        src={`https://tastybook.onrender.com/${recipe.image}`}
         alt={recipe.title}
         className="recipeImg"
       />

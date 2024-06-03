@@ -6,12 +6,10 @@ import styles from "../styles/UserRecipes.module.css";
 const UserRecipes = () => {
   const [userRecipes, setUserRecipes] = useState([]);
 
-  axios.defaults.withCredentials = true;
-
   useEffect(() => {
     const fetchUserRecipes = async () => {
       try {
-        const response = await axios.get("https://tasty-book-api.vercel.app/recipe/", {
+        const response = await axios.get("https://tastybook.onrender.com/recipe/", {
           headers: {
             "Content-Type": "application/json",
           },

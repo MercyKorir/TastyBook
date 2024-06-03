@@ -9,14 +9,12 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  axios.defaults.withCredentials = true;
-
   const handleResetPassword = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
-        "https://tasty-book-api.vercel.app/user/forgot-password",
+        "https://tastybook.onrender.com/user/forgot-password",
         { email },
         {
           headers: {

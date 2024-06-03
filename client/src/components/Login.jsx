@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/Login.module.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -15,9 +15,7 @@ const Login = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [message, setMessage] = useState("");
 
-  axios.defaults.withCredentials = true;
-
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +30,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://tasty-book-api.vercel.app/user/login",
+        "https://tastybook.onrender.com/user/login",
         loginData,
         {
           headers: {
@@ -48,7 +46,7 @@ const Login = () => {
           email: "",
           password: "",
         });
-        // navigate("/user");
+        navigate("/user");
       } else {
         setMessage("Login failed. Check your email and password.");
       }

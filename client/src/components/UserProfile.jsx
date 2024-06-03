@@ -13,16 +13,11 @@ const UserProfile = () => {
   const [cookies, ,] = useCookies(["token"]);
   const [activeTab, setActiveTab] = useState("recipes");
 
-  axios.defaults.withCredentials = true;
-
   const handleDeleteAccount = async () => {
     try {
-      const response = await axios.delete(
-        "https://tasty-book-api.vercel.app/user/delete",
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.delete("https://tastybook.onrender.com/user/delete", {
+        withCredentials: true,
+      });
       if (response.status === 200) {
         alert("User account deleted successfully");
         navigate("/login");
@@ -40,7 +35,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     axios
-      .get("https://tasty-book-api.vercel.app/user/verify", {
+      .get("https://tastybook.onrender.com/user/verify", {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${cookies.token}`,
