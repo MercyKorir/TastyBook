@@ -71,8 +71,6 @@ router.get("/verify", verifyToken, (req, res) => {
 router.post("/logout", (req, res) => {
   const token = req.cookies.token;
 
-  console.log(token);
-
   try {
     if (token) {
       res.clearCookie("token", {
