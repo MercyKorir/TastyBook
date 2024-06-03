@@ -19,29 +19,6 @@ const Header = () => {
     navigate("/login");
   };
 
-  const handleCheckLogin = async () => {
-    try {
-      const response = await axios.get(
-        "https://tastybook.onrender.com/user/verify",
-        {
-          withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${cookies.token}`,
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-    } catch (err) {
-      console.error("Error verifying user: ", err);
-      setIsLoggedIn(false);
-    }
-  };
-
   const handleLogout = async (e) => {
     e.preventDefault();
 
@@ -72,6 +49,28 @@ const Header = () => {
   };
 
   useEffect(() => {
+    const handleCheckLogin = async () => {
+      try {
+        const response = await axios.get(
+          "https://tastybook.onrender.com/user/verify",
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${cookies.token}`,
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+        }
+      } catch (err) {
+        console.error("Error verifying user: ", err);
+        setIsLoggedIn(false);
+      }
+    };
     handleCheckLogin();
     if (isLoggedIn) {
       axios
@@ -97,7 +96,7 @@ const Header = () => {
     } else {
       return;
     }
-  }, [cookies.token, navigate, isLoggedIn, handleCheckLogin]);
+  }, [cookies.token, navigate, isLoggedIn]);
 
   return (
     <header>

@@ -11,31 +11,30 @@ const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    handleCheckLogin();
-  }, []);
+    const handleCheckLogin = async () => {
+      try {
+        const response = await axios.get(
+          "https://tastybook.onrender.com/user/verify",
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${cookies.token}`,
+            },
+          }
+        );
 
-  const handleCheckLogin = async () => {
-    try {
-      const response = await axios.get(
-        "https://tastybook.onrender.com/user/verify",
-        {
-          withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${cookies.token}`,
-          },
+        if (response.status === 200) {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
         }
-      );
-
-      if (response.status === 200) {
-        setIsLoggedIn(true);
-      } else {
+      } catch (err) {
+        console.error("Error verifying user: ", err);
         setIsLoggedIn(false);
       }
-    } catch (err) {
-      console.error("Error verifying user: ", err);
-      setIsLoggedIn(false);
-    }
-  };
+    };
+    handleCheckLogin();
+  }, [cookies.token]);
 
   const handleAddRecipe = () => {
     if (!isLoggedIn) {
