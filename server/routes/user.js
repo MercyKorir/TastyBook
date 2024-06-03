@@ -71,18 +71,24 @@ router.get("/verify", verifyToken, (req, res) => {
 router.post("/logout", (req, res) => {
   const token = req.cookies.token;
 
-  if (token) {
-    res.clearCookie("token", {
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
-      path: "/",
-    })
+  console.log(token);
 
-    token = null;
-    res.json({ message: "Logout successful" });
-  } else {
-    res.status(400).json({ message: "User not logged in" });
+  try {
+    if (token) {
+      res.clearCookie("token", {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        path: "/",
+      });
+
+      res.json({ message: "Logout successful" });
+    } else {
+      res.status(400).json({ message: "User not logged in" });
+    }
+  } catch (err) {
+    console.error("Error logging out: ", err);
+    res.status(500).json({ error: "Error logging out" });
   }
 });
 
