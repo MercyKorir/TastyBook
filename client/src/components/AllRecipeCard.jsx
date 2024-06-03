@@ -14,6 +14,10 @@ const AllRecipeCard = ({ recipe }) => {
 
   const isLoggedIn = !!cookies.token;
 
+  useEffect(() => {
+    console.log("Cookies at component mount: ", cookies);
+  }, [cookies])
+
   const handleLike = async () => {
     console.log("Cookies on like: ", cookies);
     if (!isLoggedIn) {
