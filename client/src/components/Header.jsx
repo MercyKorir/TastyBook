@@ -12,10 +12,34 @@ const Header = () => {
   const [cookies, , removeCookie] = useCookies(["token"]);
   const [user, setUser] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
     navigate("/login");
+  };
+
+  const handleCheckLogin = async () => {
+    try {
+      const response = await axios.get(
+        "https://tastybook.onrender.com/user/verify",
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${cookies.token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    } catch (err) {
+      console.error("Error verifying user: ", err);
+      setIsLoggedIn(false);
+    }
   };
 
   const handleLogout = async (e) => {
@@ -48,7 +72,8 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (cookies.token) {
+    handleCheckLogin();
+    if (isLoggedIn) {
       axios
         .get("https://tastybook.onrender.com/user/verify", {
           withCredentials: true,
@@ -72,7 +97,7 @@ const Header = () => {
     } else {
       return;
     }
-  }, [cookies.token, navigate]);
+  }, [cookies.token, navigate, isLoggedIn, handleCheckLogin]);
 
   return (
     <header>

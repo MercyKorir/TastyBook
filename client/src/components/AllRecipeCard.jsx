@@ -10,16 +10,38 @@ const AllRecipeCard = ({ recipe }) => {
   const [likesCount, setLikesCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [cookies, ,] = useCookies(["token"]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  const isLoggedIn = !!cookies.token;
-
   useEffect(() => {
-    console.log("Cookies at component mount: ", cookies);
-  }, [cookies])
+    handleCheckLogin();
+  }, []);
+
+  const handleCheckLogin = async () => {
+    try {
+      const response = await axios.get(
+        "https://tastybook.onrender.com/user/verify",
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${cookies.token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    } catch (err) {
+      console.error("Error verifying user: ", err);
+      setIsLoggedIn(false);
+    }
+  };
 
   const handleLike = async () => {
-    console.log("Cookies on like: ", cookies);
+    console.log("Logged in: ", isLoggedIn);
     if (!isLoggedIn) {
       const confirmLogin = window.confirm("Please log in to like this recipe");
       if (confirmLogin) {
@@ -70,7 +92,6 @@ const AllRecipeCard = ({ recipe }) => {
   };
 
   useEffect(() => {
-    console.log("Cookies at component mount: ", cookies);
     const fetchLikesCount = async () => {
       try {
         const response = await axios.get(
@@ -117,7 +138,7 @@ const AllRecipeCard = ({ recipe }) => {
     const interval = setInterval(fetchLikesCount, 3000);
 
     return () => clearInterval(interval);
-  }, [recipe._id, isLoggedIn, cookies]);
+  }, [recipe._id, isLoggedIn]);
 
   return (
     <div id="viewRecipe">

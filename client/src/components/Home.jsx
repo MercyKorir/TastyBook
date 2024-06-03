@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +8,34 @@ import { useCookies } from "react-cookie";
 const Home = () => {
   const navigate = useNavigate();
   const [cookies, ,] = useCookies(["token"]);
-  const [isLoggedIn] = useState(!!cookies.token);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    handleCheckLogin();
+  }, []);
+
+  const handleCheckLogin = async () => {
+    try {
+      const response = await axios.get(
+        "https://tastybook.onrender.com/user/verify",
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${cookies.token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    } catch (err) {
+      console.error("Error verifying user: ", err);
+      setIsLoggedIn(false);
+    }
+  };
 
   const handleAddRecipe = () => {
     if (!isLoggedIn) {
