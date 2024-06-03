@@ -52,6 +52,10 @@ router.post("/login", (req, res, next) => {
       httpOnly: true,
       sameSite: "none",
       secure: true,
+      domain: [
+        "https://main--jovial-hamster-ea9fe6.netlify.app",
+        "https://tastybook.onrender.com",
+      ],
       path: "/",
     });
 
