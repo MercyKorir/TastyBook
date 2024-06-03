@@ -19,7 +19,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://tastybook.onrender.com"],
+    origin: [
+      "http://localhost:3000",
+      "https://tastybook.onrender.com",
+      "https://main--jovial-hamster-ea9fe6.netlify.app/",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
